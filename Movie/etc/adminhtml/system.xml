@@ -24,10 +24,12 @@
                 </field>
                 <field id="row_magenest_movie" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Rows in table "magenest_movie"</label>
+                    <frontend_model>Magenest\Movie\Model\Config\Source\Field\CountMovie</frontend_model>
                     <comment>This field's value is equal to number of rows in table "magenest_movie", read-only</comment>
                 </field>
                 <field id="row_magenest_actor" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Rows in table "magenest_actor"</label>
+                    <frontend_model>Magenest\Movie\Model\Config\Source\Field\CountActor</frontend_model>
                     <comment>This field's value is equal to number of rows in table "magenest_actor", read-only</comment>
                 </field>
                 <field id="button" translate="label" type="button" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
