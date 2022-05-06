@@ -18,6 +18,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 
     protected function _construct()
     {
-        $this->_init('Magenest\Movie\Model\Subscription', 'Magenest\Movie\Model\ResourceModel\Subscription');
+        $this->_init(\Magenest\Movie\Model\Subscription::class, \Magenest\Movie\Model\ResourceModel\Subscription::class);
     }
 }
