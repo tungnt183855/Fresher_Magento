@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item name="buttons" xsi:type="array">
+
+    <item name="import" xsi:type="array">
+        <item name="name" xsi:type="string">import</item>
+        <item name="label" xsi:type="string" translate="true">Import</item>
+        <item name="class" xsi:type="string">secondary</item>
+        <item name="url" xsi:type="string">*/*/importdata</item>
+        <item name="sortOrder" xsi:type="number">20</item>
+    </item>
+
+    <item name="export" xsi:type="array">
+        <item name="name" xsi:type="string">export</item>
+        <item name="label" xsi:type="string" translate="true">Export</item>
+        <item name="class" xsi:type="string">secondary</item>
+        <item name="url" xsi:type="string">*/*/exportdata</item>
+        <item name="sortOrder" xsi:type="number">30</item>
+    </item>
+
+</item>

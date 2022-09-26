@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <settings>
+        <buttons>
+            <button name="export">
+                <url path="movie/sales/exportdata"/>
+                <class>primary</class>
+                <label translate="true">Export CSV</label>
+            </button>
+        </buttons>
+<!--        <spinner>sales_order_columns</spinner>-->
+<!--        <deps>-->
+<!--            <dep>sales_order_grid.sales_order_grid_data_source</dep>-->
+<!--        </deps>-->
+    </settings>
+
+</listing>

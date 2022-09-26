@@ -1,0 +1,156 @@
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <dataSource name="product_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider"
+                      name="product_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset sortOrder="1" name="assign_applicants">
+        <settings>
+            <label>Dynamic Rows Magenest</label>
+            <collapsible>true</collapsible>
+
+            <!--Here this one what I missed-->
+            <dataScope>data.assign_applicants</dataScope>
+            <!--Here this one what I missed-->
+
+        </settings>
+
+        <dynamicRows name="dynamic_row">
+            <settings>
+                <visible>true</visible>
+                <addButtonLabel translate="true">Add</addButtonLabel>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <componentType>dynamicRows</componentType>
+                <elementTmpl>ui/dynamic-rows/templates/grid</elementTmpl>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                        <item name="'positionProvider'" xsi:type="string">container_option</item>
+                    </item>
+                </argument>
+
+                <field name="description_course" formElement="input" sortOrder="20">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">description_course_rules</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                        <label translate="true">Description Magenest</label>
+                        <dataType>text</dataType>
+                        <visible>true</visible>
+                    </settings>
+                </field>
+
+                <field name="product_image" formElement="imageUploader">
+                    <settings>
+                        <componentType>imageUploader</componentType>
+                    </settings>
+                    <formElements>
+                        <imageUploader>
+                            <settings>
+                                <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                                <maxFileSize>2097152</maxFileSize>
+                                <uploaderConfig>
+                                    <param xsi:type="string" name="url">movie/index/upload</param>
+                                </uploaderConfig>
+                            </settings>
+                        </imageUploader>
+                    </formElements>
+                </field>
+
+<!--                <field name="product_image">-->
+<!--                    <argument name="data" xsi:type="array">-->
+<!--                        <item name="config" xsi:type="array">-->
+<!--                            <item name="dataType" xsi:type="string">string</item>-->
+<!--                            <item name="label" xsi:type="string" translate="true">Upload Image</item>-->
+<!--                            <item name="formElement" xsi:type="string">fileUploader</item>-->
+<!--                            <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>-->
+<!--                            <item name="previewTmpl" xsi:type="string">ui/form/element/uploader/preview</item>-->
+<!--                            <item name="sortOrder" xsi:type="number">10</item>-->
+<!--                            <item name="required" xsi:type="boolean">true</item>-->
+<!--                            <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>-->
+<!--                            <item name="uploaderConfig" xsi:type="array">-->
+<!--                                <item name="url" xsi:type="url" path="movie/index/upload"/>-->
+<!--                            </item>-->
+<!--                            <item name="notice" xsi:type="string"><![CDATA[Allowed file types:jpg, jpeg, png.]]></item>-->
+<!--                        </item>-->
+<!--                    </argument>-->
+<!--                </field>-->
+
+                <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">60</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete
+                            </item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+    </fieldset>
+
+    <fieldset name="schedule_design_update" sortOrder="2">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Attr Product Datetime Magenest</label>
+        </settings>
+        <container name="date_group" component="Magento_Ui/js/form/components/group" sortOrder="220">
+            <argument name="data" xsi:type="array">
+                <item name="type" xsi:type="string">group</item>
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">admin__control-grouped-date</item>
+                    <item name="breakLine" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <field name="custom_design_from" component="Magenest_Movie/js/form/element/date" sortOrder="230" formElement="date">
+                <settings>
+                    <additionalClasses>
+                        <class name="admin__field-date">true</class>
+                    </additionalClasses>
+                    <dataType>string</dataType>
+                    <label translate="true">Course Magenest From field</label>
+                    <scopeLabel>[STORE VIEW]</scopeLabel>
+                </settings>
+            </field>
+            <field name="custom_design_to" component="Magenest_Movie/js/form/element/date" sortOrder="240" formElement="date">
+                <settings>
+                    <scopeLabel/>
+                    <additionalClasses>
+                        <class name="admin__field-date">true</class>
+                    </additionalClasses>
+                    <dataType>string</dataType>
+                    <label translate="true">To</label>
+                </settings>
+            </field>
+        </container>
+    </fieldset>
+
+</form>

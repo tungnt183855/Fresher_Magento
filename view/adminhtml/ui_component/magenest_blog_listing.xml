@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_blog_listing.magenest_blog_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>magenest_blog_columns</spinner>
+        <deps>
+            <dep>magenest_blog_listing.magenest_blog_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/addnew"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <exportButton name="export_button"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters" />
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <dataSource name="magenest_blog_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>Magenest_Movie::listing</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="magenest_blog_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <!-- columns -->
+    <columns name="magenest_blog_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <!-- Column id -->
+        <column name="id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Blog ID</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="author_id" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">author_id</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="title" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">title</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="description" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">description</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="content" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">content</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="url_rewrite" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">url_rewrite</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="status" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">status</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="create_at" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">create_at</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="update_at" sortOrder="90">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">update_at</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="username" sortOrder="100">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">username</label>
+            </settings>
+        </column>
+
+        <!-- Column -->
+        <column name="email" sortOrder="110">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">email</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Action">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+
+    </columns>
+</listing>
