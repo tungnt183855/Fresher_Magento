@@ -1,0 +1,12 @@
+<button id="sample">
+    <?= $block->getData('title') ?>
+</button>
+
+<style>
+    #sample {
+        border-radius: 5px;
+        width: <?= $block->getData('width') ?>;
+        height: <?= $block->getData('height') ?>;
+        color: <?= $block->getData('color') ?>;
+    }
+</style>

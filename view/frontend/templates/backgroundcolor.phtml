@@ -1,0 +1,18 @@
+<!--"[{"color_name":"Green","color_code":"#22cc6c"},{"color_name":"Blue","color_code":"#10e0dd"}]"-->
+<div id="custom-component" data-bind="scope:'customcomponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#custom-component": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customcomponent": {
+                            "component": "Magenest_Movie/js/custom-component",
+                            "colorConfig": <?php echo $block->json->serialize($block->getConfigData()); ?>
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>

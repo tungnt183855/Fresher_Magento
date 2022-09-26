@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order_items">
+            <arguments>
+                <argument name="columns" xsi:type="array">
+                    <item name="time_delivery" xsi:type="string" translate="true">Time Delivery</item>
+                </argument>
+            </arguments>
+            <referenceBlock name="default_order_items_renderer">
+                <arguments>
+                    <argument name="columns" xsi:type="array">
+                        <item name="time_delivery" xsi:type="string" translate="true">col-time_delivery</item>
+                    </argument>
+                </arguments>
+            </referenceBlock>
+
+            <block class="Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer"
+                   name="column_time_delivery"
+                   template="Magenest_Movie::sale/order/view/column.phtml" group="column" />
+        </referenceBlock>
+    </body>
+</page>

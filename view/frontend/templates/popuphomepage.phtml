@@ -1,0 +1,40 @@
+<?php if ($this->getRequest()->getFullActionName() == 'cms_index_index'): ?>
+    <?php if (($groupName = $block->getGroupB2B())): ?>
+        <div id="custom-popup-modal">
+            <p>Content Here...</p>
+        </div>
+
+        <script>
+            require(
+                [
+                    'jquery',
+                    'Magento_Ui/js/modal/modal'
+                ],
+                function(
+                    $,
+                    modal
+                ) {
+                    var options = {
+                        type: 'popup',
+                        responsive: true,
+                        innerScroll: true,
+                        modalClass: 'custom-popup-modal',
+                        buttons: [{
+                            text: $.mage.__('Close'),
+                            class: '',
+                            click: function () {
+                                this.closeModal();
+                            }
+                        }]
+                    };
+
+                    var popup = modal(options, $('#custom-popup-modal'));
+
+                    $( document ).ready(function() {
+                        $('#custom-popup-modal').modal('openModal');
+                    });
+                }
+            );
+        </script>
+    <?php endif;?>
+<?php endif;?>

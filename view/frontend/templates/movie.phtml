@@ -1,0 +1,25 @@
+<h2>Director list</h2>
+<ul>
+    <?php foreach ($block->getProducts() as $product): ?>
+        <li><?php echo 'id: ' .''. $product->getDirector_id() .' => '. $product->getName() ?></li>
+    <?php endforeach; ?>
+</ul>
+<h2>Movie list</h2>
+<ul>
+    <?php foreach ($block->getMovies() as $movie): ?>
+        <li><?php echo $movie->getName() ?></li>
+    <?php endforeach; ?>
+</ul>
+<h2>Actor list</h2>
+<ul>
+    <?php foreach ($block->getActors() as $actor): ?>
+        <li><?php echo $actor->getName() ?></li>
+    <?php endforeach; ?>
+</ul>
+
+<h2>Movie Actor list</h2>
+<ul>
+    <?php foreach ($block->getMovieActors() as $movieActor): ?>
+        <li><?php echo $movieActor->getMovie_actor_id() ?></li>
+    <?php endforeach; ?>
+</ul>

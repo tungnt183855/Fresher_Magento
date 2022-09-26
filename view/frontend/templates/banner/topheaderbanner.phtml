@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Magenest\Movie\Block\Home\Banner
+ */
+?>
+
+<?php foreach ($block->getUrlBanner() as $banner): ?>
+    <?php if(($banner['enabled'] == true) && ($banner['place'] == 1)): ?>
+        <img src="<?php echo $banner['image'] ?>" alt="" width="600" class="center">
+    <?php endif; ?>
+<?php endforeach; ?>
+
+

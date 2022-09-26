@@ -1,0 +1,13 @@
+<input type="button" name="google_button" id="google_button" value="Google Button">
+
+<script type="text/javascript">
+    (function  () {
+        require(["jquery"], function($) {
+            $(document).ready(function($) {
+                $("#google_button").on("click", function(e){
+                    window.location.reload();
+                })
+            });
+        });
+    })();
+</script>

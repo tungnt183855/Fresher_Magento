@@ -1,0 +1,8 @@
+<?php if ($groupName = $block->getGroupName()): ?>
+    <div class="control">
+        <label for="group-name" class="avatar-file-upload">
+            <?php echo __('Group Name'); ?>
+        </label>
+        <input id="group-name" disabled="disabled" value="<?php echo $groupName ?>"/>
+    </div>
+<?php endif;?>

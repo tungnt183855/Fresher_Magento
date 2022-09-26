@@ -1,0 +1,12 @@
+<select id="colorOptions"
+        style="margin-bottom: 20px;"
+        data-bind=" options: colorOptions,
+                    optionsText: 'color_name',
+                    value: color">
+</select>
+
+<div data-bind="with: color">
+    <h3>You have chosen <b data-bind="text: color_name"></b> with color code <b data-bind="text: color_code"></b></h3>
+
+</div>
+

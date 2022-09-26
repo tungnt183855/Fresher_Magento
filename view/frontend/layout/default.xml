@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+            <referenceContainer name="content">
+                <block class="Magenest\Movie\Block\Home\BackgroundColor"
+                       name="background_color_options"
+                       template="Magenest_Movie::backgroundcolor.phtml" />
+            </referenceContainer>
+
+        <!--        <referenceContainer name="header.container">-->
+        <!--            <block class="Magenest\Movie\Block\Home\Banner"-->
+        <!--                   name="topbanner"-->
+        <!--                   template="Magenest_Movie::banner/topheaderbanner.phtml"-->
+        <!--                   before="-" />-->
+        <!--        </referenceContainer>-->
+
+        <!--        <referenceContainer name="left">-->
+        <!--            <block class="Magenest\Movie\Block\Home\Banner" template="Magenest_Movie::banner/leftsidebar.phtml" name="mageplaza.betterslider.sidebar.left.top" before="-">-->
+        <!--                <action method="setPosition">-->
+        <!--                    <argument name="position" xsi:type="string">sidebar-left-top</argument>-->
+        <!--                </action>-->
+        <!--            </block>-->
+        <!--        </referenceContainer>-->
+
+        <!--        <referenceContainer name="right">-->
+        <!--            <block class="Magenest\Movie\Block\Home\Banner" template="Magenest_Movie::banner/rightsidebar.phtml" name="mageplaza.betterslider.sidebar.right.top" before="-">-->
+        <!--                <action method="setPosition">-->
+        <!--                    <argument name="position" xsi:type="string">sidebar-right-top</argument>-->
+        <!--                </action>-->
+        <!--            </block>-->
+        <!--        </referenceContainer>-->
+
+    </body>
+</page>
