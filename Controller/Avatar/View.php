@@ -1,0 +1,98 @@
+<?php
+
+namespace Magenest\Movie\Controller\Avatar;
+
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Framework\Exception\NotFoundException;
+
+class View extends \Magento\Framework\App\Action\Action
+{
+    protected $resultRawFactory;
+
+    protected $urlDecoder;
+
+    protected $fileFactory;
+
+    public function __construct(
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
+        \Magento\Framework\Url\DecoderInterface $urlDecoder,
+        \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+    ) {
+        $this->resultRawFactory    = $resultRawFactory;
+        $this->urlDecoder  = $urlDecoder;
+        $this->fileFactory = $fileFactory;
+        return parent::__construct($context);
+    }
+
+    public function execute()
+    {
+        $file = null;
+        $plain = false;
+        if ($this->getRequest()->getParam('file')) {
+            // download file
+            $file = $this->urlDecoder->decode(
+                $this->getRequest()->getParam('file')
+            );
+        } elseif ($this->getRequest()->getParam('image')) {
+            // show plain image
+            $file = $this->urlDecoder->decode(
+                $this->getRequest()->getParam('image')
+            );
+            $plain = true;
+        } else {
+            throw new NotFoundException(__('Page not found.'));
+        }
+
+        /** @var \Magento\Framework\Filesystem $filesystem */
+        $filesystem = $this->_objectManager->get(\Magento\Framework\Filesystem::class);
+        $directory = $filesystem->getDirectoryRead(DirectoryList::MEDIA);
+        $fileName = CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER . '/' . ltrim($file, '/');
+        $path = $directory->getAbsolutePath($fileName);
+
+        if (!$directory->isFile($fileName)
+            && !$this->_objectManager->get(\Magento\MediaStorage\Helper\File\Storage::class)->processStorageFile($path)
+        ) {
+            throw new NotFoundException(__('Page not found.'));
+        }
+
+        if ($plain) {
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            switch (strtolower($extension)) {
+                case 'gif':
+                    $contentType = 'image/gif';
+                    break;
+                case 'jpg':
+                    $contentType = 'image/jpeg';
+                    break;
+                case 'png':
+                    $contentType = 'image/png';
+                    break;
+                default:
+                    $contentType = 'application/octet-stream';
+                    break;
+            }
+            $stat = $directory->stat($fileName);
+            $contentLength = $stat['size'];
+            $contentModify = $stat['mtime'];
+
+            /** @var \Magento\Framework\Controller\Result\Raw $resultRaw */
+            $resultRaw = $this->resultRawFactory->create();
+            $resultRaw->setHttpResponseCode(200)
+                ->setHeader('Pragma', 'public', true)
+                ->setHeader('Content-type', $contentType, true)
+                ->setHeader('Content-Length', $contentLength)
+                ->setHeader('Last-Modified', date('r', $contentModify));
+            $resultRaw->setContents($directory->readFile($fileName));
+            return $resultRaw;
+        } else {
+            $name = pathinfo($path, PATHINFO_BASENAME);
+            $this->fileFactory->create(
+                $name,
+                ['type' => 'filename', 'value' => $fileName],
+                DirectoryList::MEDIA
+            );
+        }
+    }
+}

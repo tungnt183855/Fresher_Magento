@@ -1,0 +1,10 @@
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="abandonedcart_item1"
+              label="Abandoned Cart Item 1"
+              file="abandonedcart_item1.html"
+              type="html"
+              module="Magenest_Movie"
+              area="frontend"
+    />
+</config>

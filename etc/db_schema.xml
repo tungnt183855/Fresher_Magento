@@ -1,0 +1,97 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_blog" resource="default" engine="innodb" comment="Magenest Blog">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Blog ID"/>
+        <column xsi:type="int" name="author_id" padding="10" unsigned="true" nullable="false"
+                comment="Author ID"/>
+        <column xsi:type="varchar" name="title" length="255"
+                comment="Title"/>
+        <column xsi:type="text" name="description"
+                comment="description"/>
+        <column xsi:type="varchar" name="content" length="255"
+                comment="content"/>
+        <column xsi:type="text" name="url_rewrite"
+                comment="url_rewrite"/>
+        <column xsi:type="text" name="status"
+                comment="status"/>
+        <column xsi:type="datetime" name="create_at"
+                comment="create_at"/>
+        <column xsi:type="datetime" name="update_at"
+                comment="update_at"/>
+
+        <index referenceId="MAGENEST_BLOG_TITLE" indexType="btree">
+            <column name="title"/>
+        </index>
+        <index referenceId="MAGENEST_BLOG_CONTENT" indexType="btree">
+            <column name="content"/>
+        </index>
+
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="MAGENEST_BLOG_AUTHOR_ID_ADMIN_USER_USER_ID"
+                    table="magenest_blog" column="author_id" referenceTable="admin_user"
+                    referenceColumn="user_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="magenest_category" resource="default" engine="innodb" comment="Magenest category">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Category ID"/>
+        <column xsi:type="varchar" name="name" length="255"
+                comment="name"/>
+        <index referenceId="MAGENEST_CATEGORY_NAME" indexType="btree">
+            <column name="name"/>
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+
+    <table name="magenest_blog_category" resource="default" engine="innodb" comment="Magenest blog category">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Blog category ID"/>
+        <column xsi:type="int" name="blog_id" unsigned="true" nullable="false"
+                comment="blog_id"/>
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false"
+                comment="category_id"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="sales_order" resource="default" engine="innodb" comment="Sales order time delivery">
+        <column xsi:type="datetime" name="time_delivery"
+                comment="Time Delivery"/>
+    </table>
+
+    <table name="quote" resource="default" engine="innodb" comment="Quote time delivery">
+        <column xsi:type="datetime" name="time_delivery"
+                comment="Time Delivery"/>
+    </table>
+
+    <table name="magenest_banner" resource="default" engine="innodb" comment="Magenest banner">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Banner ID"/>
+        <column xsi:type="varchar" name="name" length="255"
+                comment="name"/>
+        <column xsi:type="boolean" name="enabled" default="false"
+                comment="enabled"/>
+        <column xsi:type="int" name="place"
+                comment="Display place"/>
+        <column xsi:type="varchar" name="title" length="255"
+                comment="title"/>
+        <column xsi:type="varchar" length="255" name="image"
+                comment="Banner image"/>
+        <column xsi:type="varchar" name="link" length="255"
+                comment="link"/>
+        <column xsi:type="varchar" name="text" length="255"
+                comment="Add text"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

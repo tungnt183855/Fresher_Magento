@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Magenest\Movie\Block\Sample" id="Magenest_widget_sample">
+        <label>Button</label>
+        <description>Thêm button</description>
+        <parameters>
+            <parameter name="title" sort_order="10" visible="true" xsi:type="text" required="true">
+                <label>Tiêu đề</label>
+            </parameter>
+            <parameter name="color" sort_order="20" visible="true" xsi:type="text" required="true">
+                <label>Màu sắc</label>
+            </parameter>
+            <parameter name="width" sort_order="30" visible="true" xsi:type="text" required="true">
+                <label>Chiều rộng</label>
+            </parameter>
+            <parameter name="height" sort_order="40" visible="true" xsi:type="text" required="true">
+                <label>Chiều dài</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

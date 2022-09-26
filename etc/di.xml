@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_director_listing_data_source" xsi:type="string">magenest_director_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="magenest_director_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_director</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\DirectorModel\Director</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_actor_listing_data_source" xsi:type="string">magenest_actor_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="magenest_actor_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_actor</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ActorModel\Actor</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_movie_actor_listing_data_source" xsi:type="string">magenest_movie_actor_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="magenest_movie_actor_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_movie_actor</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\MovieActorModel\MovieActor</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_movie_listing_data_source" xsi:type="string">magenest_movie_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="magenest_movie_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_movie</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\MovieModel\Movie</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magenest\Movie\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">test/tmp</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+            <argument name="basePath" xsi:type="string">test</argument>
+        </arguments>
+    </type>
+
+<!--    magenest_blog-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_blog_listing_data_source" xsi:type="string">Magenest\Movie\View\Element\UiComponent\DataProvider\JoinTable</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magenest\Movie\View\Element\UiComponent\DataProvider\JoinTable">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_blog</argument>
+            <argument name="eventPrefix" xsi:type="string">Magenesnt_Movie_magenest_blog_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">Magenesnt_Movie_magenest_blog_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Blog</argument>
+        </arguments>
+    </type>
+
+    <preference for="Magenest\Movie\Api\BlogRepositoryInterface" type="Magenest\Movie\Model\BlogRepository"/>
+    <preference for="Magenest\Movie\Api\Data\BlogInterface" type="Magenest\Movie\Model\Blog"/>
+
+<!--    magenest_banner-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_banner_listing_data_source" xsi:type="string">magenest_banner_collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="magenest_banner_collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_banner</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Banner</argument>
+        </arguments>
+    </virtualType>
+
+
+    <type name="Magenest\Movie\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">label/tmp/image</argument>
+            <argument name="basePath" xsi:type="string">label/image</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

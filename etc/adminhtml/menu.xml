@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Movie::magenest"
+             title="Magenest"
+             module="Magenest_Movie"
+             sortOrder="41"
+             resource="Magenest_Movie::menu"
+        />
+
+        <add id="Magenest_Movie::movie"
+             title="Movie"
+             module="Magenest_Movie"
+             sortOrder="10"
+             action="movie/movie/"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::magenest"
+        />
+
+        <add id="Magenest_Movie::director"
+             title="Director"
+             module="Magenest_Movie"
+             sortOrder="20"
+             action="movie/director/"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::magenest"
+        />
+
+        <add id="Magenest_Movie::actor"
+             title="Actor"
+             module="Magenest_Movie"
+             sortOrder="30"
+             action="movie/actor/"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::magenest"
+        />
+
+        <add id="Magenest_Movie::movie_actor"
+             title="Movie Actor"
+             module="Magenest_Movie"
+             sortOrder="40"
+             action="movie/movieactor/"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::magenest"
+        />
+
+        <add id="Magenest_Movie::magenest_blog"
+             title="Magenest Blog"
+             module="Magenest_Movie"
+             sortOrder="50"
+             action="movie/blog/"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::magenest"
+        />
+
+        <add id="Magenest_Movie::magenest_banner"
+             title="Magenest Banner"
+             module="Magenest_Movie"
+             sortOrder="60"
+             action="movie/banner/"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::magenest"
+        />
+    </menu>
+</config>

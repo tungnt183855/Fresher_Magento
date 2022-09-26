@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="2">
+            <label>Magenest</label>
+        </tab>
+        <section id="movie" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>magenest-movie</class>
+            <label>Movie</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Movie::Configuration</resource>
+            <group id="moviepage" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Movie Configuration</label>
+                <field id="text_field" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Field</label>
+                </field>
+                <field id="yes_no_field_abcd" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Yes/No_Field_abcd</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_select_field" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Select Field</label>
+                    <source_model>Magenest\Movie\Model\Config\Source\Custom</source_model>
+                </field>
+                <field id="row_magenest_movie" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rows in table "magenest_movie"</label>
+                    <frontend_model>Magenest\Movie\Model\Config\Source\Field\CountMovie</frontend_model>
+                    <comment>This field's value is equal to number of rows in table "magenest_movie", read-only</comment>
+                </field>
+                <field id="row_magenest_actor" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rows in table "magenest_actor"</label>
+                    <frontend_model>Magenest\Movie\Model\Config\Source\Field\CountActor</frontend_model>
+                    <comment>This field's value is equal to number of rows in table "magenest_actor", read-only</comment>
+                </field>
+                <field id="button" translate="label" type="button" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Field</label>
+                    <frontend_model>Magenest\Movie\Model\Config\Source\Button</frontend_model>
+                </field>
+            </group>
+        </section>
+
+        <section id="magenest" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>magenest-movie</class>
+            <label>Background Color</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Movie::Configuration</resource>
+            <group id="backgroundcolor" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Background Color</label>
+                <field id="colorcode" translate="label" type="select" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Background Color</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Dynamic\BackgroundColor</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+            </group>
+        </section>
+
+        <tab id="catalog" translate="label" sortOrder="200">
+            <label>Catalog</label>
+        </tab>
+        <tab id="advanced" translate="label" sortOrder="999999">
+            <label>Advanced</label>
+        </tab>
+        <section id="catalog" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Catalog</label>
+            <tab>catalog</tab>
+            <resource>Magento_Catalog::config_catalog</resource>
+            <group id="custom_course" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Course Product</label>
+                <field id="customer_group" translate="label" type="select" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Setting Customer Group</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Form\Field\CustomerGroup</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>
